@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Job Crawler</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device width, initial-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/static/myapp/bootstrap.min.css">
+  <script src="/static/myapp/jquery.min.js"></script>
+  <script src="/static/myapp/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+    <center><h1>Job Bot</h1></center>
+    <center><h5>by Allison Butler, Asher de Mesa, and Martha Nakashian</h5></center>
+    <div class="row">
+      <form action="{% url 'myapp:index' %}" method="post">
+	{% csrf_token %}
+	{{ form }}
+	<input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+</body>
+</html>
