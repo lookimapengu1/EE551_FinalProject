@@ -1,17 +1,17 @@
 import smtplib 
-import jobsear
+from myapp.jobsear import Jobsear
 
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from .models import searchData
+from myapp.models import searchData
 
-sender = "marthajonakashian@gmail.com"
+def sendMail():
+        
+    sender = "marthajonakashian@gmail.com"
 
-allData = searchData.objects.all()
-
-for row in allData:
-
-	Jobsear(row.terms,row.city,row.state)
+    allData = searchData.objects.all()
+    for row in allData:
+	jobresults = Jobsear(row.terms,row.city,row.state)
 
 	recipient = row.address
 
@@ -21,7 +21,11 @@ for row in allData:
 	msg['To'] = recipient
 
 	phrase = "Hi!\nHere are the links to the best jobs for you:\n"
-	body = phrase + jobresults
+        jobs = ''
+        for job in jobresults:
+                jobs += 'Title: '+ job[0]+ '\tCompany: '+ job[1]+ '\tLocation: '+ job[2]+ ', '+ job[3]+ '\tLink: '+ job[4]+ '\n'
+
+        body = phrase + jobs
 			
 	msg.attach(MIMEText(body, 'plain'))
 
@@ -29,7 +33,7 @@ for row in allData:
 	server.ehlo()
 	server.starttls()
 	server.ehlo()
-	server.login("marthajonakashian","15martha15")
+	server.login("chronostat.sit@gmail.com","cpe/ee423")
 	text = msg.as_string()
 	server.sendmail(sender,recipient,text)
 

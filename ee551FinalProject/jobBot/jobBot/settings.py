@@ -25,7 +25,7 @@ SECRET_KEY = '(kzm)8#*u9dz0e4ykby#(k61(u7w*5u58hj_e(50jw1zq=n7$2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.107']
+ALLOWED_HOSTS = ['192.168.1.100','192.168.1.101','192.168.1.102','192.168.1.103','192.168.1.104','192.168.1.105','192.168.1.106','192.168.1.107','192.168.1.108','192.168.1.109','192.168.1.111','155.246.209.45','155.246.209.163']
 
 
 # Application definition
@@ -36,8 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'myapp',
+    'chroniker',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SITE_ID=1
